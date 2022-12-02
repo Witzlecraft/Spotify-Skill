@@ -19,8 +19,8 @@ class Spotify(MycroftSkill):
             data = {'word': "" + action}
             self.speak_dialog('answer', data)
 
-
-            spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
+            spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="86b15566a333442d857c62305715ce33",
+                                                           client_secret="afd8ce39aa304b6db8fb1901d01b4fec"))
             if len(sys.argv) > 1:
                 name = ' '.join(sys.argv[1:])
             else:
