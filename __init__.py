@@ -1,6 +1,7 @@
 from mycroft import intent_file_handler, MycroftSkill, intent_handler
 from mycroft.skills.context import adds_context, removes_context
 import spotipy
+import sys
 from spotipy.oauth2 import SpotifyClientCredentials
 
 class Spotify(MycroftSkill):
@@ -18,10 +19,18 @@ class Spotify(MycroftSkill):
             data = {'word': "" + action}
             self.speak_dialog('answer', data)
 
-            sp = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="86b15566a333442d857c62305715ce33", client_secret="c0640cff12c64092abedb334d9678fc8"))
-            results = sp.search(q='weezer', limit=20)
-            for idx, track in enumerate(results['tracks']['items']):
-                print(idx, track['name'])
+
+            spotify = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials())
+            if len(sys.argv) > 1:
+                name = ' '.join(sys.argv[1:])
+            else:
+                name = 'Radiohead'
+
+            results = spotify.search(q='artist:' + name, type='artist')
+            items = results['artists']['items']
+            if len(items) > 0:
+                artist = items[0]
+                print(artist['name'], artist['images'][0]['url'])
         
 
 
