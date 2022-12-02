@@ -24,7 +24,7 @@ class Spotify(MycroftSkill):
             if len(sys.argv) > 1:
                 name = ' '.join(sys.argv[1:])
             else:
-                name = 'Radiohead'
+                name = ''+action
 
             results = spotify.search(q='artist:' + name, type='artist')
             items = results['artists']['items']
