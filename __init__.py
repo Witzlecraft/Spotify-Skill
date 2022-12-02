@@ -14,7 +14,7 @@ class Spotify(MycroftSkill):
         # Do a blink
         if action.lower() == "blink":
             self.log.info("Blinking! " + action)
-            data = {'inqiury_total': "" + action}
+            data = {'word': "" + action}
             self.speak_dialog('answer', data)
         
 
