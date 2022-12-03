@@ -26,7 +26,7 @@ class Spotify(MycroftSkill):
         else:
             name = ''+action
 
-        results = spotify.search(q='tracks:' + name, type='track')
+        results = spotify.search(q='track:' + name, type='track')
         items = results['track']['items']
         if len(items) > 0:
             track = items[0]
