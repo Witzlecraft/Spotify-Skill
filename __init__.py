@@ -15,22 +15,22 @@ class Spotify(MycroftSkill):
         
         # Do a blink
         #if action.lower() == "blink":
-            self.log.info("Blinking! " + action)
-            data = {'word': "" + action}
-            self.speak_dialog('answer', data)
+        self.log.info("Blinking! " + action)
+        data = {'word': "" + action}
+        self.speak_dialog('answer', data)
 
-            spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="86b15566a333442d857c62305715ce33",
+        spotify = spotipy.Spotify(auth_manager=SpotifyClientCredentials(client_id="86b15566a333442d857c62305715ce33",
                                                            client_secret="afd8ce39aa304b6db8fb1901d01b4fec"))
-            if len(sys.argv) > 1:
-                name = ' '.join(sys.argv[1:])
-            else:
-                name = ''+action
+        if len(sys.argv) > 1:
+            name = ' '.join(sys.argv[1:])
+        else:
+            name = ''+action
 
-            results = spotify.search(q='artist:' + name, type='artist')
-            items = results['artists']['items']
-            if len(items) > 0:
-                artist = items[0]
-                print(artist['name'], artist['images'][0]['url'])
+        results = spotify.search(q='artist:' + name, type='artist')
+        items = results['artists']['items']
+        if len(items) > 0:
+            artist = items[0]
+            print(artist['name'], artist['images'][0]['url'])
         
 
 
