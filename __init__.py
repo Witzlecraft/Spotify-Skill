@@ -26,11 +26,11 @@ class Spotify(MycroftSkill):
         else:
             name = ''+action
 
-        results = spotify.search(q='artist:' + name, type='artist')
-        items = results['artists']['items']
+        results = spotify.search(q='tracks:' + name, type='track')
+        items = results['track']['items']
         if len(items) > 0:
-            artist = items[0]
-            print(artist['name'], artist['images'][0]['url'])
+            track = items[0]
+            print(track['name'], track['preview_url'][0]['url'])
         
 
 
