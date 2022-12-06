@@ -1,8 +1,14 @@
 from mycroft import intent_file_handler, MycroftSkill, intent_handler
 from mycroft.skills.context import adds_context, removes_context
-import spotipy
+#import spotipy
+import time
+from playsound import playsound
+import youtube_dl
+import re, requests, subprocess, urllib.parse, urllib.request
+from bs4 import BeautifulSoup
+import webbrowser
 import sys
-from spotipy.oauth2 import SpotifyClientCredentials
+#from spotipy.oauth2 import SpotifyClientCredentials
 
 class Spotify(MycroftSkill):
     def __init__(self):
