@@ -14,7 +14,7 @@ class Spotify(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
 
-    @intent_file_handler('spotify.intent').require("Stop"))
+    @intent_file_handler('spotify.intent')
     def handle_spotify(self, message):
         # Get string value from 'action' variable
         action = message.data.get('word')
