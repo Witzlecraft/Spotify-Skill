@@ -20,7 +20,10 @@ class Spotify(MycroftSkill):
         action = message.data.get('word')
         
         # Do a blink
-        #if action.lower() == "blink":
+        if action.lower() == "stop":
+             subprocess.call(["pkill", "omxplayer"])
+	     return None
+
         self.log.info("Blinking! " + action)
         data = {'word': "" + action}
         self.speak_dialog('answer', data)
