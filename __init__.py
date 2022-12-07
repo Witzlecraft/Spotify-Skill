@@ -14,7 +14,7 @@ class Spotify(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
 
-    @intent_file_handler('spotify.intent')
+    @intent_file_handler('spotify.intent').require("Stop"))
     def handle_spotify(self, message):
         # Get string value from 'action' variable
         action = message.data.get('word')
@@ -26,6 +26,8 @@ class Spotify(MycroftSkill):
 
         if action.lower() == "stop":
              subprocess.call(["pkill", "omxplayer"])
+             super(Spotify, self).shutdown()
+             #sys.exit()
              #self.stop_my_subprocess()
 	     #return None
 
@@ -76,7 +78,11 @@ class Spotify(MycroftSkill):
         #    track = items[0]
         #    print(track['name'], track['preview_url'][0]['url'])
         
+    def shutdown(self):
+        super(Spotify, self).shutdown()
 
+    def stop(self):
+        pass
 
 def create_skill():
     return Spotify()
