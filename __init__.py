@@ -55,12 +55,13 @@ class Spotify(MycroftSkill):
             'outtmpl':filename,
         }
 
-        self.speak_dialog(f"{video_info['title']} nun runtergeladen")
+        self.speak_dialog(f"{video_info['title']} herunterladen gestartet")
 
         with youtube_dl.YoutubeDL(options) as ydl:
             ydl.download([video_info['webpage_url']])
 
         print("Download complete... {}".format(filename))
+        self.speak_dialog(f"{video_info['title']} ist nun runtergeladen, es wird nun abgespielt")
         print("Playing Audio (" + filename + ")...")
         subprocess.Popen(['omxplayer', '--vol', '-1000', '-o', 'hdmi', filename]).wait()
 
