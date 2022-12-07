@@ -22,7 +22,7 @@ class Spotify(MycroftSkill):
         # Do a blink
         def stop(self):
             subprocess.call(["pkill", "omxplayer"])
-	    print("Stop now...")
+            print("Stop now...")
 
         if action.lower() == "stop":
              subprocess.call(["pkill", "omxplayer"])
