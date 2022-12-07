@@ -55,6 +55,8 @@ class Spotify(MycroftSkill):
             'outtmpl':filename,
         }
 
+        self.speak_dialog(f"{video_info['title']} nun runtergeladen")
+
         with youtube_dl.YoutubeDL(options) as ydl:
             ydl.download([video_info['webpage_url']])
 
