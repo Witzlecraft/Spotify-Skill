@@ -27,7 +27,7 @@ class Spotify(MycroftSkill):
         if action.lower() == "stop":
              subprocess.call(["pkill", "omxplayer"])
              super(Spotify, self).shutdown()
-             #sys.exit()
+             sys.exit()
              #self.stop_my_subprocess()
 	     #return None
 
