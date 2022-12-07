@@ -60,7 +60,7 @@ class Spotify(MycroftSkill):
 
         print("Download complete... {}".format(filename))
         print("Playing Audio (" + filename + ")...")
-        subprocess.Popen(['omxplayer', '-o', '--vol', '500', 'hdmi', filename]).wait()
+        subprocess.Popen(['omxplayer', '--vol', '-1000', '-o', 'hdmi', filename]).wait()
 
 
 
